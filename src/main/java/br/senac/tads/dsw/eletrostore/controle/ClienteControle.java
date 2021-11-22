@@ -52,7 +52,6 @@ public class ClienteControle {
                 
 		cliente.setSenha(new BCryptPasswordEncoder().encode(cliente.getSenha()));
 		clienteRepositorio.saveAndFlush(cliente);
-		
 		return cadastrar(new Cliente());
 	}
 
