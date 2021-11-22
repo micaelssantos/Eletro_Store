@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+    <head>
+        <title>Detalhe Produto</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link rel="icon" href="/image/favicon.png" />
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <!-- Bootstrap core CSS -->
+        <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css"
+              rel="stylesheet" />
+        <!-- Custom styles for this template -->
+        <link href="/css/style.css" rel="stylesheet" />
+        <link href="css/shop-homepage.css" rel="stylesheet">
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Navigation -->
+        <div class="container" layout:fragment="corpo">
+            <main class="flex-fill">
+                <div class="container">
+                    <div class="row g-3">
+                        <div class="col-12 col-sm-6">
+                            <img th:src="@{/mostrarImagem/{imagem}(imagem=${produto.nomeImagem})}" class="img-thumbnail" id="imgProduto">
+                            <br class="clearfix">
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <h1 th:text="${produto.nome}"></h1>
+                            <p></p>
+                            <h6>Descriçao</h6>
+                            <p th:text="*{produto.descricao}"></p>
+                            <p></p>
+                            <h6>Marca</h6>
+                            <p th:text="*{produto.marca}"></p>
+                            <p></p>
+                            <h5>Valor do Produto: R$ <span th:text="${produto.valorVenda}" ></span> </h5>
+                            <p></p>
+                            <p>
+                                <a class="btn btn-lg btn-danger mb-3 mb-xl-0 me-2" th:href="@{/adicionarCarrinho/{id}(id=${produto.id})}" role="button">Adicionar ao Carrinho</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{cliente/fragments/layout}">
+    <head>
+        <title>Finalizar Compra</title>
+    </head>
+    <body>
+        <!-- Page Content -->
+        <div class="container" layout:fragment="corpo">
+            <form action="/finalizar/confirmar" method="post">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>
+
+                        </h3>
+                    </div>
+                    <div class="col-6">
+                        <select class="form-control" name="formaPagamento">
+                            <option value="Cartão de Crédito">Cartão de Crédito</option>
+                            <option value="Cartão de Débito">Cartão de Débito</option>
+                            <option value="Boleto">Boleto</option>
+                            <option value="Transferência">Transferência</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Imagem</th>
+                                        <th scope="col">Produto</th>
+                                        <th scope="col" class="text-left">Quantidade</th>
+                                        <th scope="col" class="text-right">Valor Unitário</th>
+                                        <th scope="col" class="text-right">Valor Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="item : ${listaItens}">
+                                        <td> <img th:src="@{/mostrarImagem/{imagem}(imagem=${item.produto.nomeImagem})}" width="50"/></td>
+                                        <td th:text="${item.produto.nome}"></td>
+                                        <td><span th:text="${item.quantidade}"></span></td>
+                                        <td class="text-right" th:text="${item.valorUnitario}"></td>
+                                        <td class="text-right" th:text="${item.valorTotal}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Sub-Total</td>
+                                        <td class="text-right"><span
+                                                th:text="${compra.valorTotal}"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Frete Único</td>
+                                        <td class="text-right">20,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong>Total</strong></td>
+                                        <td class="text-right"><strong><span
+                                                    th:text="${compra.valorTotal}"></strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="row">
+                            <div class="col-sm-12  col-md-6"></div>
+                            <div class="col-sm-12 col-md-6 text-right">
+                                <button class="btn btn-lg btn-block btn-success text-uppercase">Confirmar a Compra</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </form>
+        </div>
+        <!-- /.container -->
+    </body>
+</html>
