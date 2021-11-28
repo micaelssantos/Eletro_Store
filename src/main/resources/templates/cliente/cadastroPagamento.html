@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+    <head>
+        <title>Cadastrar Cartão</title>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <div class="container" layout:fragment="corpo">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Cadastrar Pagamento</h2>
+                </div>
+                <div class="col-12">
+                    <form action="/cliente/pagamento/salvar" th:object="${pagamento}" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nome">Nome no Cartão </label> <input type="text" required
+                                                                             class="form-control" id="nome" placeholder="João da Silva..."
+                                                                             autofocus="autofocus" th:field="*{nome}" value="" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="numero">Número do Cartão</label> <input type="text" required
+                                                                                  class="form-control" id="numero" placeholder="Número do Cartão"
+                                                                                  autofocus="autofocus" th:field="*{numero}" value="" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="cvv">CVV</label> <input type="number" required
+                                                                          class="form-control" id="cvv" placeholder="Código de Segurança"
+                                                                          autofocus="autofocus" th:field="*{CVV}" value="" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="expiracao">Validade</label> <input type="text" required
+                                                                          class="form-control" id="expiracao" placeholder="Validade (mm/aa)"
+                                                                          autofocus="autofocus" th:field="*{expiracao}" value="" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="id" th:field="*{id}" value="" />
+                        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -2,57 +2,59 @@
 <html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
     <head>
         <title>Cadastrar Endereço</title>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <link rel="icon" href="/image/favicon.png" />
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <!-- Bootstrap core CSS -->
-        <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css"
-              rel="stylesheet" />
-        <!-- Custom styles for this template -->
-        <link href="/css/style.css" rel="stylesheet" />
-        <link href="css/shop-homepage.css" rel="stylesheet">
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <!-- Navigation -->
         <div class="container" layout:fragment="corpo">
-            <main class="flex-fill">
-                <div class="container">
-                    <h1>Minha Conta</h1>
-                    <div class="row gx-3">
-                        <div class="col-8">
-                            <form action="POST">
-                                <div class="form-floating mb-3 col-md-6 col-lg-4">
-                                    <input class="form-control" type="text" id="txtCEP" placeholder=" " autofocus />
-                                    <label for="txtCEP">CEP</label>
-                                </div>
-                                <div class="mb-3 col-md-6 col-lg-8">
-                                    <textarea class="form-control text-muted bg-light text" style="height: 58px; font-size: 14px;" 
-                                              disabled>Digite o CEP</textarea>
-                                </div> 
-                                <div class="form-floating mb-3 col-md-4">
-                                    <input class="form-control" type="text" id="txtNumero" placeholder=" " autofocus />
-                                    <label for="txtNumero">Número</label>
-                                </div>
-                                <div class="form-floating mb-3 col-md-8">
-                                    <input class="form-control" type="text" id="txtComplemento" placeholder=" " autofocus />
-                                    <label for="txtComplemento">Complemento</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input class="form-control" type="text" id="txtReferencia" placeholder=" " autofocus />
-                                    <label for="txtReferencia">Ponto de Referência</label>
-                                </div>                           
-                            </form>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-12">
+                    <h2>Cadastrar Endereço</h2>
                 </div>
-            </main>
+                <div class="col-12">
+                    <form action="/cliente/endereco/salvar" th:object="${endereco}" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="cep">Digite o CEP</label> <input type="text" required
+                                                                             class="form-control" id="cep" placeholder="Apenas Números"
+                                                                             autofocus="autofocus" th:field="*{cep}" value="" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="logradouro">Logradouro</label> <input type="text" required
+                                                                                  class="form-control" id="logradouro" placeholder="Rua ..."
+                                                                                  autofocus="autofocus" th:field="*{logradouro}" value="" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="numero">Número</label> <input type="number" required
+                                                                          class="form-control" id="numero" placeholder="123"
+                                                                          autofocus="autofocus" th:field="*{numero}" value="" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="bairro">Bairro</label> <input type="text" required
+                                                                          class="form-control" id="bairro" placeholder="Bairro"
+                                                                          autofocus="autofocus" th:field="*{bairro}" value="" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="cidade">Cidade</label> <input type="text" required
+                                                                          class="form-control" id="cidade" placeholder="Cidade"
+                                                                          autofocus="autofocus" th:field="*{cidade}" value="" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="cidade">Estado</label> <input type="text" required
+                                                                          class="form-control" id="estado" placeholder="Estado"
+                                                                          autofocus="autofocus" th:field="*{estado}" value="" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="id" th:field="*{id}" value="" />
+                        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </body>
 </html>

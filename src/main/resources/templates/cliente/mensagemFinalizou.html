@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width" />
-<title>Login</title>
-
-</head>
-
-<body>
-	<h1>Compra Efetuada com sucesso</h1>
-	<a href="/">Voltar para a Página Inicial</a>
-</body>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Compra Efetuada</title>
+    </head>
+    <body>
+        <div class="container" layout:fragment="corpo">
+            <div class="card-body">
+                <h3>Compra Efetuada com sucesso - Número do Pedido: <span th:text="${compra.id}"></span> </h3>
+            </div>
+                <a class="btn btn-primary btn-lg btn-block "  href="/" role="button">Ir para Página Inicial</a>
+        </div>
+    </body>
 </html>

@@ -1,8 +1,6 @@
 package br.senac.tads.dsw.eletrostore.modelos;
-
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,22 +14,44 @@ import javax.persistence.TemporalType;
 @Table(name = "compra")
 public class Compra implements Serializable {
 
-	public Compra() {
-		super();
-	}
+    public Compra() {
+        super();
+    }
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	@ManyToOne
-	private Cliente cliente;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataCompra = new Date();
-	private String formaPagamento;
-	private Double valorTotal=0.;
-        private Double frete=20.;
+    @ManyToOne
+    private Cliente cliente;
+    @ManyToOne
+    private Endereco endereco;
+    @ManyToOne
+    private Pagamento pagamento;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataCompra = new Date();
+    private String formaPagamento;
+    private Double valorTotal = 0.;
+    private Double frete = 20.;
+
+    
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 
     public Double getFrete() {
         return frete;
@@ -41,44 +61,43 @@ public class Compra implements Serializable {
         this.frete = frete;
     }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
-	public Date getDataCompra() {
-		return dataCompra;
-	}
+    public Date getDataCompra() {
+        return dataCompra;
+    }
 
-	public void setDataCompra(Date dataCompra) {
-		this.dataCompra = dataCompra;
-	}
+    public void setDataCompra(Date dataCompra) {
+        this.dataCompra = dataCompra;
+    }
 
-	public String getFormaPagamento() {
-		return formaPagamento;
-	}
+    public String getFormaPagamento() {
+        return formaPagamento;
+    }
 
-	public void setFormaPagamento(String formaPagamento) {
-		this.formaPagamento = formaPagamento;
-	}
+    public void setFormaPagamento(String formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
 
-	public Double getValorTotal() {
-		return valorTotal;
-	}
+    public Double getValorTotal() {
+        return valorTotal;
+    }
 
-	public void setValorTotal(Double valorTotal) {
-		this.valorTotal = valorTotal;
-	}
-
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
 }

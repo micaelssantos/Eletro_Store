@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+    <head>
+        <title>Endereço de Entrega</title>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <div class="container" layout:fragment="corpo">
+            <div class="container">
+                <h1>Selecione o Endereço de Entrega</h1>
+                <div class="col-lg-4 col-md-6 mb-4"
+                     th:each="endereco : ${listaEnderecos}">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Logradouro: <span th:text="${endereco.logradouro}"></span> - <span th:text="${endereco.numero}"></span>
+                            </h4>
+                            <h6>
+                                CEP: <span th:text="${endereco.cep}"></span>
+                            </h6>
+                            <p class="card-text" th:text="${endereco.cidade}"></p>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-primary btn-lg btn-block"  th:href="@{/finalizar/selecionaPagamento/{id}(id=${endereco.id})}" role="button">Selecionar</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="/carrinho" class="btn btn-outline-success btn-lg mb-4">
+                    Voltar aos Itens
+                </a>
+                <a href="/cliente/cadastroEndereco" class="btn btn-outline-success btn-lg mb-4">
+                    Cadastrar Endereço
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

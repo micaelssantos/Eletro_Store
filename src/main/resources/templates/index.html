@@ -57,7 +57,7 @@
                                         <a th:href="@{/cliente/detalheProduto/{id}(id=${produto.id})}"><span th:text="${produto.nome}"></span></a>
                                     </h4>
                                     <h5>
-                                        <span th:text="${produto.valorVenda}"></span>
+                                        R$ <span th:text="${produto.valorVenda}"></span>
                                     </h5>
                                     <p class="card-text" th:text="${produto.descricao}"></p>
                                 </div>

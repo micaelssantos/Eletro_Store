@@ -7,20 +7,12 @@
     <body>
         <!-- Page Content -->
         <div class="container" layout:fragment="corpo">
-            <form action="/finalizar/confirmar" method="post">
+            <form action="/finalizar/confirmar" method="POST">
                 <div class="row">
                     <div class="col-12">
                         <h3>
-
+                            <span  th:text="${cliente.nome}"></span>
                         </h3>
-                    </div>
-                    <div class="col-6">
-                        <select class="form-control" name="formaPagamento">
-                            <option value="Cartão de Crédito">Cartão de Crédito</option>
-                            <option value="Cartão de Débito">Cartão de Débito</option>
-                            <option value="Boleto">Boleto</option>
-                            <option value="Transferência">Transferência</option>
-                        </select>
                     </div>
                     <div class="col-12">
                         <div class="table-responsive">
@@ -55,7 +47,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>Frete Único</td>
-                                        <td class="text-right">20,00</td>
+                                        <td class="text-right">20.0</td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -69,16 +61,44 @@
                             </table>
                         </div>
                     </div>
-                    <div class="col mb-2">
-                        <div class="row">
-                            <div class="col-sm-12  col-md-6"></div>
-                            <div class="col-sm-12 col-md-6 text-right">
-                                <button class="btn btn-lg btn-block btn-success text-uppercase">Confirmar a Compra</button>
+                    <div class="container">
+                        <div class="card h-100">
+
+                            <div class="card-body">
+                                <h3>Endereço de Entrega</h3>
+                                <h4 class="card-title">
+                                    Logradouro: <span th:text="${endereco.logradouro}"></span> - <span th:text="${endereco.numero}"></span>
+                                </h4>
+                                <h6>
+                                    CEP: <span th:text="${endereco.cep}"></span>
+                                </h6>
+                                <p class="card-text" th:text="${endereco.cidade}"></p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /.row -->
+                    <div class="container">
+                        <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title"> Cartão de Crédito
+                                <h5>Nome no Cartão: <span th:text="${pagamento.nome}"></span></h5>
+                            </h4>
+                            <h6>
+                                Vencimento: <span th:text="${pagamento.expiracao}"></span>
+                            </h6>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="col mb-2">
+                            <div class="row">
+                                <div class="col-sm-12  col-md-6"></div>
+                                <div class="col-sm-12 col-md-6 text-right">
+                                    <button class="btn btn-lg btn-block btn-success text-uppercase">Confirmar a Compra</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
             </form>
         </div>
         <!-- /.container -->

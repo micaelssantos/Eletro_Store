@@ -75,24 +75,19 @@ public class ProdutoControle {
         if (result.hasErrors()) {
             return cadastrar(produto);
         }
-
         produtoRepositorio.saveAndFlush(produto);
-
         try {
             if (!arquivo.isEmpty()) {
                 byte[] bytes = arquivo.getBytes();
                 Path caminho = Paths
                         .get(caminhoImagens + String.valueOf(produto.getId()) + arquivo.getOriginalFilename());
                 Files.write(caminho, bytes);
-
                 produto.setNomeImagem(String.valueOf(produto.getId()) + arquivo.getOriginalFilename());
                 produtoRepositorio.saveAndFlush(produto);
-
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return cadastrar(new Produto());
     }
 

@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 @Entity
 @Table(name = "cliente")
 public class Cliente implements Serializable {
@@ -19,7 +18,7 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
+        
 	private String nome;
 	private String cpf;
 	private String email;

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+    <head>
+        <title>Pagamentos</title>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <div class="container" layout:fragment="corpo">
+            <div class="container">
+                <h1>Selecione o Método de Pagamento</h1>
+                <div class="col-lg-4 col-md-6 mb-4"
+                     th:each="pagamento : ${listaPagamentos}">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title"> Cartão de Crédito
+                                <span th:text="${pagamento.nome}"></span>
+                            </h4>
+                            <h6>
+                                <span th:text="${pagamento.expiracao}"></span>
+                            </h6>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-primary btn-lg btn-block"  th:href="@{/finalizar/checkout/{id}(id=${pagamento.id})}" role="button">Selecionar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Boleto Bancário
+                            </h4>
+                            <h6>
+                                O Boleto será enviado para o e-mail.
+                            </h6>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-primary btn-lg btn-block "  href="/finalizar/checkout" role="button">Selecionar</a>
+                        </div>
+                    </div>   
+
+
+                </div>
+
+                <a href="/finalizar" class="btn btn-outline-success btn-lg mb-4">
+                    Voltar aos Endereços
+                </a>
+                <a href="/cliente/cadastroPagamento" class="btn btn-outline-success btn-lg mb-4">
+                    Cadastrar Cartão
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
